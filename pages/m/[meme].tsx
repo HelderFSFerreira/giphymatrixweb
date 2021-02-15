@@ -1,6 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
-import Image from 'next/image'
-import { useRouter } from 'next/router'
+import Image from 'next/image';
+// import { useRouter } from 'next/router';
 import { Params } from 'next/dist/next-server/server/router';
 import { GiphyAPI } from '../../lib/giphy';
 import { GiphyAPIOut } from '../../interfaces';
@@ -11,8 +11,7 @@ type Props = {
   }
 
 const MemesDetail = ({ item, errors }: Props) => {
-    const { isFallback } = useRouter();
-    console.log(isFallback);
+    // const { isFallback } = useRouter();
 
     if (errors) {
         return (<title>Error</title>);
@@ -34,8 +33,8 @@ const MemesDetail = ({ item, errors }: Props) => {
                     </tr>
                 </tbody>
             </table>
-        )
-    }
+        );
+    };
     return (<title>Error</title>);
   }
   
@@ -43,18 +42,18 @@ export default MemesDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
     // We'll not pre-render only these paths at build time.
-    return { paths: [], fallback: true }
+    return { paths: [], fallback: true };
 }
 
 export const getStaticProps: GetStaticProps = async ( {params}: Params ) => {
     const keyWord: string = params.meme;
     if (keyWord) {
-        let item = await new GiphyAPI( ).getBest5(keyWord);
+        const item = await new GiphyAPI( ).getBest5(keyWord);
         
         if (item) {
-            return { props: { item } }
+            return { props: { item } };
         } else {
-            return { props: { errors: 'No memes found' } }
+            return { props: { errors: 'No memes found' } };
         }
     } else {
         return { notFound: true };
