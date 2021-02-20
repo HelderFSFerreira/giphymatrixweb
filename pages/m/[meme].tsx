@@ -10,9 +10,9 @@ type Props = {
     errors?: string
 }
 
-const createImage = (options) => {
+const createImage = (options :{src :any}) => {
     options = options || {};
-    const img = document.createElement("img");
+    const img :HTMLImageElement = document.createElement("img");
     // createElement(tagName: string, options?: ElementCreationOptions): HTMLElement;
     if (options.src) {
       img.src = options.src;
@@ -20,7 +20,7 @@ const createImage = (options) => {
     return img;
   };
   
-  const copyToClipboard = async (pngBlob) => {
+  const copyToClipboard = async (pngBlob :Blob) => {
     try {
       await navigator.clipboard.write([
         // eslint-disable-next-line no-undef
