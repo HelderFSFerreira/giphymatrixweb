@@ -73,9 +73,10 @@ const MemesDetail = ({ item, errors }: Props) => {
 
         const images = item.map((image) =>
             <th key={image.url}>
-                <Image src={image.url} alt={image.title} width={200} height={200} onClick = {(image) => {
-                    console.log('http://localhost:3000/_next/image?url=https%3A%2F%2Fmedia0.giphy.com%2Fmedia%2Fgw3IWyGkC0rsazTi%2Fgiphy.gif%3Fcid%3D0a2bed9avpv3fvvwqjc260ahcuv03s38og23vofvh5mcby6j%26rid%3Dgiphy.gif&w=640&q=75');
-                    copyImg('http://localhost:3000/_next/image?url=https%3A%2F%2Fmedia0.giphy.com%2Fmedia%2Fgw3IWyGkC0rsazTi%2Fgiphy.gif%3Fcid%3D0a2bed9avpv3fvvwqjc260ahcuv03s38og23vofvh5mcby6j%26rid%3Dgiphy.gif&w=640&q=75');
+                <Image src={image.url} alt={image.title} width={200} height={200} onClick = {() => {
+                    console.log(image.url);
+                    // image.
+                    copyImg(image.url);
                 }} />
             </th>
         );
