@@ -115,3 +115,5 @@ export const getStaticProps: GetStaticProps = async ( {params}: Params ) => {
         return { notFound: true };
     }
 }
+
+
