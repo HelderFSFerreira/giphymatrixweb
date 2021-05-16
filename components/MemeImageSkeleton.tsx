@@ -14,8 +14,7 @@ const MemeImageSkeleton = () => {
             </div>
         </div>
     );
-    
-}
+};
 
 
 export default MemeImageSkeleton;
