@@ -1,9 +1,11 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
-import Image from 'next/image';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
+
+import MemeImage from '../../components/MemeImage';
 import { Params } from 'next/dist/next-server/server/router';
 import { GiphyAPI } from '../../lib/giphy';
 import { GiphyAPIOut } from '../../interfaces';
+import MemeImageSkeleton from '../../components/MemeImageSkeleton';
 
 type Props = {
     item?: GiphyAPIOut[]
@@ -11,31 +13,35 @@ type Props = {
   }
 
 const MemesDetail = ({ item, errors }: Props) => {
-    // const { isFallback } = useRouter();
+    const { isFallback } = useRouter();
 
     if (errors) {
         return (<title>Error</title>);
     }
 
-    if (item) {
+    if (isFallback) {
+        return (
+            <div className='min-h-screen bg-gray-50 flex items-center justify-center space-x-1' >
+                <MemeImageSkeleton/>
+                <MemeImageSkeleton/>
+                <MemeImageSkeleton/>
+                <MemeImageSkeleton/>
+                <MemeImageSkeleton/>
+            </div>
+        );
+    }
 
+    if (item) {
         const images = item.map((image) =>
-            <th key={image.url}>
-                <Image src={image.url} alt={image.title} width={200} height={200}/>
-            </th>
+            <MemeImage url={image.url} title={image.title}/>
         );
 
         return (
-            <table>
-                <tbody>
-                    <tr>
-                        {images}
-                    </tr>
-                </tbody>
-            </table>
+            <div className='min-h-screen bg-gray-50 flex items-center justify-center space-x-1' >
+                {images}
+            </div>
         );
     };
-    return (<title>Error</title>);
   }
   
 export default MemesDetail;
