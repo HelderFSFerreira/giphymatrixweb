@@ -33,7 +33,7 @@ const MemesDetail = ({ item, errors }: Props) => {
 
     if (item) {
         const images = item.map((image) =>
-            <MemeImage url={image.url} title={image.title}/>;
+            <MemeImage url={image.url} title={image.title}/>
         );
 
         return (
