@@ -10,12 +10,12 @@
   "dependencies": {
     "next": "latest",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
     "@types/node": "17.0.45",
     "@types/react": "17.0.83",
-    "@types/react-dom": "17.0.25",
+    "@types/react-dom": "18.3.1",
     "autoprefixer": "10.4.20",
     "postcss": "8.4.47",
     "tailwindcss": "3.4.13",
